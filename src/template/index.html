@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- Link to static CSS file using url_for -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Login</h1>
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="picture">Select Country:</label>
+            <select id="picture" name="picture" required>
+                <option value="colombia">Colombia</option>
+                <option value="poland">Poland</option>
+                <option value="thailand">Thailand</option>
+            </select>
+
+            <button type="submit">Test</button>
+        </form>
+
+        <p id="response"></p>
+    </div>
+
+    <!-- Link to static JS file using url_for -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
