@@ -54,7 +54,7 @@ def get_metadata_token():
     return response.text
 
 
-############### Endpoints for API ###############
+############### Endpoints for Metadata API ###############
 
 # Route to fetch EC2 region
 @app.route('/metadata/region', methods=['GET'])
@@ -71,6 +71,8 @@ def metadata_instance_name():
     # Fetch the instance name from the EC2 instance metadata
     instance_name = get_metadata("tags/Name")
     return jsonify({"instance-name": instance_name}), 200
+
+
 
 ############### DB Endpoints ###############
 
