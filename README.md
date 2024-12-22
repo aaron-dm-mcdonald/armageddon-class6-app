@@ -45,6 +45,11 @@ INSERT INTO user (username, password) VALUES
 
 -----------
 
+mysql -h database-1.cdw6y4mqq875.ap-northeast-1.rds.amazonaws.com -u admin -p
+
+DROP DATABASE user_db;
+
+
 SELECT * FROM user WHERE username = %s AND password = %s
 
 SELECT url FROM country WHERE country_name = %s
