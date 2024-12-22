@@ -72,6 +72,20 @@ def metadata_instance_name():
     instance_name = get_metadata("tags/Name")
     return jsonify({"instance-name": instance_name}), 200
 
+# Route to render metadata page
+@app.route('/metadata', methods=['GET'])
+def metadata_page():
+    # Fetch region from the /metadata/region endpoint
+    region_response = requests.get('http://localhost/metadata/region')
+    region = region_response.json().get('region', 'N/A')  # Default to 'N/A' if not found
+
+    # Fetch instance name from the /metadata/instance-name endpoint
+    instance_name_response = requests.get('http://localhost/metadata/instance-name')
+    instance_name = instance_name_response.json().get('instance-name', 'N/A')  # Default to 'N/A' if not found
+
+    # Render the HTML page with metadata information
+    return render_template('metadata.html', region=region, instance_name=instance_name)
+
 
 
 ############### DB Endpoints ###############
