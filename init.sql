@@ -10,9 +10,10 @@ CREATE TABLE country (
 
 -- Example data for country table
 INSERT INTO country (country_name, url) VALUES
-('thailand', 'URL-1'),
-('colombia', 'URL-2'),
-('poland', 'URL-3');
+('thailand', 'https://test-124655869758685.s3.us-east-1.amazonaws.com/thai-bad-4.jpg'),
+('colombia', 'https://test-124655869758685.s3.us-east-1.amazonaws.com/colombiana.jpg'),
+('vietnam', 'https://www.instagram.com/p/DCquPAizq03/?utm_source=ig_web_copy_link'),
+('poland', 'https://test-124655869758685.s3.us-east-1.amazonaws.com/polish.png');
 
 -- Creating the user table
 CREATE TABLE user (

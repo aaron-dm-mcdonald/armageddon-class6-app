@@ -1,31 +1,42 @@
-document.getElementById('loginForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
+document.getElementById('loginForm').addEventListener('submit', async function (event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Get form values
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
     const picture = document.getElementById('picture').value;
-    
-    // Use relative URL for API call
-    fetch('/auth', {  // Relative path to the Flask API endpoint
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            username: username,
-            password: password,
-            picture: picture
-        })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.url) {
-            document.getElementById('response').innerText = `URL: ${data.url}`;
+
+    // Prepare the request payload
+    const payload = {
+        username: username,
+        password: password,
+        picture: picture,
+    };
+
+    try {
+        // Make a POST request to the '/auth' endpoint
+        const response = await fetch('/auth', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(payload),
+        });
+
+        // Handle the response
+        if (response.ok) {
+            const data = await response.json();
+            const url = data.url;
+
+            // Redirect to the URL returned by the API
+            window.location.href = url;
         } else {
-            document.getElementById('response').innerText = data.error || 'Unknown error';
+            // Handle errors (e.g., invalid login or country)
+            const errorData = await response.json();
+            document.getElementById('response').innerText = `Error: ${errorData.error}`;
         }
-    })
-    .catch(error => {
-        document.getElementById('response').innerText = `Error: ${error.message}`;
-    });
+    } catch (error) {
+        // Handle network errors
+        document.getElementById('response').innerText = 'Error: Unable to connect to the server.';
+    }
 });

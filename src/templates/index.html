@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Generic Medical Record App</title>
     <!-- Link to static CSS file using url_for -->
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
@@ -17,14 +17,15 @@
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
 
-            <label for="picture">Select Country:</label>
+            <label for="picture">Select Record:</label>
             <select id="picture" name="picture" required>
                 <option value="colombia">Colombia</option>
                 <option value="poland">Poland</option>
                 <option value="thailand">Thailand</option>
+                <option value="vietnam">Thailand</option>
             </select>
 
-            <button type="submit">Test</button>
+            <button type="submit">Examine "Medical Records"</button>
         </form>
 
         <p id="response"></p>
