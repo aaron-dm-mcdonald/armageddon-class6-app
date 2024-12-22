@@ -65,25 +65,18 @@ def metadata_region():
     region = az[:-1]
     return jsonify({"region": region}), 200
 
-# Route to fetch EC2 instance name
-@app.route('/metadata/instance-name', methods=['GET'])
-# Function to get EC2 instance name
-def get_instance_name():
+# Route to fetch EC2 instance ID
+@app.route('/metadata/instance-id', methods=['GET'])
+def metadata_instance_id():
     # Fetch instance ID from metadata
     instance_id = get_metadata("instance-id")
+    return jsonify({"instance-id": instance_id}), 200
     
-    # Use Boto3 to retrieve the instance tags
-    ec2 = boto3.client('ec2')
-    response = ec2.describe_instances(InstanceIds=[instance_id])
-    
-    # Extract the instance name tag
-    instance_name = None
-    for tag in response['Reservations'][0]['Instances'][0]['Tags']:
-        if tag['Key'] == 'Name':
-            instance_name = tag['Value']
-            break
-    
-    return instance_name
+    # Return the instance name in a JSON response
+    if instance_name:
+        return jsonify({"instance-name": instance_name}), 200
+    else:
+        return jsonify({"error": "Instance name tag not found"}), 404
 
 # Route to render metadata page
 @app.route('/metadata', methods=['GET'])
@@ -92,12 +85,13 @@ def metadata_page():
     region_response = requests.get('http://localhost/metadata/region')
     region = region_response.json().get('region', 'N/A')  # Default to 'N/A' if not found
 
-    # Fetch instance name from the /metadata/instance-name endpoint
-    instance_name_response = requests.get('http://localhost/metadata/instance-name')
-    instance_name = instance_name_response.json().get('instance-name', 'N/A')  # Default to 'N/A' if not found
+    # Fetch instance ID from the /metadata/instance-id endpoint
+    instance_id_response = requests.get('http://localhost/metadata/instance-id')
+    instance_id = instance_id_response.json().get('instance-id', 'N/A')  # Default to 'N/A' if not found
 
     # Render the HTML page with metadata information
-    return render_template('metadata.html', region=region, instance_name=instance_name)
+    return render_template('metadata.html', region=region, instance_id=instance_id)
+
 
 
 
