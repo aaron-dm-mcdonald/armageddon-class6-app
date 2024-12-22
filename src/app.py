@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, request, render_template, render_template_string
+from dotenv import load_dotenv
 import requests
 import pymysql
 import os
@@ -9,10 +10,13 @@ app = Flask(__name__)
 
 ############### Database Config ###############
 
-# MySQL RDS configuration (replace with your RDS endpoint, username, and password)
-DB_HOST = os.environ['DB_HOST']
-DB_USER = os.environ['DB_USER']
-DB_PASSWORD = os.environ['DB_PASSWORD']
+# Load environment variables from the .env file
+load_dotenv()
+
+# Retrieve environment variables
+DB_HOST = os.getenv('DB_HOST')
+DB_USER = os.getenv('DB_USER')
+DB_PASSWORD = os.getenv('DB_PASSWORD')
 DB_NAME = 'user_db'
 
 # Connect to the database
