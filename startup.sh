@@ -22,7 +22,7 @@ EOF
 source src/.env
 
 # Log in and initialize the database (using the mysql command directly with init.sql)
-mysql -h $DB_HOST -u $DB_USER --password=$DB_PASSWORD $DB_NAME < init.sql
+mysql -h $DB_HOST -u $DB_USER --password=$DB_PASSWORD < init.sql
 
 # Move into app directory
 cd src/
