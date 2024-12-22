@@ -1,38 +1,36 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-    margin: 0;
-    padding: 0;
-}
-
+/* Ensure the container has some padding and centers content */
 .container {
-    width: 50%;
-    margin: auto;
+    width: 300px;
+    margin: 0 auto;
     padding: 20px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
     text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 10px;
 }
 
+/* Form styling */
 form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
 }
 
-input, select, button {
+/* Styling form inputs and select */
+input, select {
     padding: 10px;
-    font-size: 16px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
+/* Button styling */
 button {
+    padding: 10px;
     background-color: #4CAF50;
     color: white;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
 }
 
@@ -40,7 +38,18 @@ button:hover {
     background-color: #45a049;
 }
 
-#result {
+/* API Metadata link styling */
+footer {
     margin-top: 20px;
-    text-align: center;
+}
+
+.metadata-link {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.metadata-link:hover {
+    text-decoration: underline;
 }

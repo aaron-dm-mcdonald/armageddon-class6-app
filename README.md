@@ -53,3 +53,7 @@ DROP DATABASE user_db;
 SELECT * FROM user WHERE username = %s AND password = %s
 
 SELECT url FROM country WHERE country_name = %s
+
+
+AURORA
+mysql -h database-2.cluster-cdw6y4mqq875.ap-northeast-1.rds.amazonaws.com -u admin -p
