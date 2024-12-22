@@ -36,27 +36,7 @@ def get_db_connection():
 def homepage():
     return render_template('index.html')
 
-# Test pic endpoint
 
-# Route to display the image with some HTML saying "test picture"
-@app.route('/test-picture', methods=['GET'])
-def test_picture():
-    # HTML template with an embedded image
-    html_content = '''
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Test Picture</title>
-    </head>
-    <body>
-        <h1>Test Picture</h1>
-        <img src="https://scontent-sea1-1.cdninstagram.com/v/t51.29350-15/344456093_6144976788957239_4788714379343087335_n.jpg?stp=dst-jpg_e35_p1080x1080_tt6&_nc_ht=scontent-sea1-1.cdninstagram.com&_nc_cat=111&_nc_ohc=QVsbXyePD84Q7kNvgG1K7E-&_nc_gid=0833f4c72afb497ab339237e12132b05&edm=AGenrX8BAAAA&ccb=7-5&oh=00_AYAooi6YA5vTUu3nUjIN3qrSbTShS7WYyC0p815BpWtjLQ&oe=676D02CE&_nc_sid=ed990e" alt="Test Picture">
-    </body>
-    </html>
-    '''
-    return render_template_string(html_content)
 
 ############### Functions for EC2 Metadata ###############
 
@@ -89,7 +69,7 @@ def metadata_region():
 @app.route('/metadata/instance-name', methods=['GET'])
 def metadata_instance_name():
     # Fetch the instance name from the EC2 instance metadata
-    instance_name = get_metadata("tags/instance-name")
+    instance_name = get_metadata("tags/Name")
     return jsonify({"instance-name": instance_name}), 200
 
 ############### DB Endpoints ###############
