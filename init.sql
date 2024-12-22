@@ -13,6 +13,7 @@ INSERT INTO country (country_name, url) VALUES
 ('thailand', 'https://test-124655869758685.s3.us-east-1.amazonaws.com/thai-bad-4.jpg'),
 ('colombia', 'https://test-124655869758685.s3.us-east-1.amazonaws.com/colombiana.jpg'),
 ('vietnam', 'https://www.instagram.com/p/DCquPAizq03/?utm_source=ig_web_copy_link'),
+('lizzo', 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcROVRD-SbhXKBjYx0uJhAGYMFBTBLKqmKQQo3A4XFxG-wM5AgxEKMM5AMMuFoRHNXqYYxCdtAahQj9kPXE9jd4d0w'),
 ('poland', 'https://test-124655869758685.s3.us-east-1.amazonaws.com/polish.png');
 
 -- Creating the user table
