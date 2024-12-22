@@ -67,10 +67,23 @@ def metadata_region():
 
 # Route to fetch EC2 instance name
 @app.route('/metadata/instance-name', methods=['GET'])
-def metadata_instance_name():
-    # Fetch the instance name from the EC2 instance metadata
-    instance_name = get_metadata("tags/Name")
-    return jsonify({"instance-name": instance_name}), 200
+# Function to get EC2 instance name
+def get_instance_name():
+    # Fetch instance ID from metadata
+    instance_id = get_metadata("instance-id")
+    
+    # Use Boto3 to retrieve the instance tags
+    ec2 = boto3.client('ec2')
+    response = ec2.describe_instances(InstanceIds=[instance_id])
+    
+    # Extract the instance name tag
+    instance_name = None
+    for tag in response['Reservations'][0]['Instances'][0]['Tags']:
+        if tag['Key'] == 'Name':
+            instance_name = tag['Value']
+            break
+    
+    return instance_name
 
 # Route to render metadata page
 @app.route('/metadata', methods=['GET'])

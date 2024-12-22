@@ -2,3 +2,4 @@ Flask
 requests
 pymysql
 python-dotenv
+boto3
