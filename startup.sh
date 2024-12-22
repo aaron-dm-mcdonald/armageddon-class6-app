@@ -11,11 +11,8 @@ sudo git clone https://github.com/aaron-dm-mcdonald/armageddon-class6-app.git fl
 cd flask-app
 
 
-
-# Set environment variables for database connection
-export DB_HOST=database-1.cdw6y4mqq875.ap-northeast-1.rds.amazonaws.com
-export DB_USER=admin
-export DB_PASSWORD=password
+# Load env
+source src/.env
 
 # Log in and initialize the database (using the mysql command directly with init.sql)
 mysql -h $DB_HOST -u $DB_USER --password=$DB_PASSWORD $DB_NAME < init.sql
