@@ -52,9 +52,28 @@ INSERT INTO user (username, password) VALUES
 -- 1. 'country' - storing country names and their associated URLs.
 -- 2. 'user' - storing usernames and their passwords.
 
+-- Install MySQL CLI on AL 2023:
+-- sudo dnf update -y
+-- sudo dnf install -y mariadb105 
+
+-- To connect to DB:
+-- mysql -h <HOST> -u <USERNAME> -p
+-- mysql -h $DB_HOST -u $DB_USER -p$DB_PASSWORD
+
+
+-- To select database, use this query:
+-- USE user_db;
+
+-- To delete the database, use this query:
+-- DROP DATABASE user_db;
+
 -- To view the contents of these tables, use the following queries:
 -- View all rows in the 'country' table:
 -- SELECT * FROM country;
 
 -- View all rows in the 'user' table:
 -- SELECT * FROM user;
+
+
+-- Change a column value in a specific row after data is inserted:
+-- UPDATE user SET password = 'test1' WHERE username = 'test-user-1';
