@@ -112,16 +112,18 @@ user_data = templatefile(
 ## Main Steps
 
 1. **Clone the Repository**:  
-   \```bash
-   git clone <repository-url>
-   \```
+  You could just clone this in you project directory. 
+
+   ```bash
+   git clone https://github.com/aaron-dm-mcdonald/armageddon-class6-app.git app
+   ```
 
 2. **Provision Initial Infrastructure**:  
    Start with the HQ region (e.g., Tokyo) and one branch region to save time.
 
 3. **Set Up Bastion Host**:
    - Determine **VPC ID**, **Subnet**, and other attributes.
-   - Provision the **security group** and EC2 instance using provided Terraform code.
+   - Provision the **security group** and **EC2 instance** using provided Terraform code.
    - Test the bastion host with **EC2 Connect**.
 
 4. **Configure Application Startup**:
