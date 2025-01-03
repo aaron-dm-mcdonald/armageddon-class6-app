@@ -79,7 +79,7 @@ The application is a simple **2-tier web app** implemented using:
 
 ### Example User Data for Bastion Host:
 
-\```hcl
+```hcl
 user_data = templatefile(
     "./scripts/app/bastion-host.sh.tpl",
     {
@@ -89,7 +89,7 @@ user_data = templatefile(
       db_name     = "user_db"
     }
 )
-\```
+```
 
 #### Notes on `templatefile()` Usage:
 - **Best Practices**:  
