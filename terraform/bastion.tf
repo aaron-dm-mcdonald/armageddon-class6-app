@@ -87,7 +87,7 @@ resource "aws_instance" "bastion_host" {
 
   # Use templatefile to dynamically generate the user_data script
   user_data = templatefile(
-    "./scripts/app/bastion-host.sh.tpl",
+    "./app/user_data/bastion-host.sh.tpl",
     {
       db_host     = module.osaka_database.rw_endpoint,
       db_user     = var.db_user,        # Pass from variables
